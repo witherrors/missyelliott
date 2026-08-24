@@ -3,7 +3,8 @@
 //
 // Step 1 - collect args and validate
 // Step 2 - connect
-//
+// Step 3 - pass shell
+// Step 4 - review weaknesses
 //
 
 use std::net::{Ipv4Addr, TcpStream};
