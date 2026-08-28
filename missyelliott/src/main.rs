@@ -16,6 +16,7 @@ use std::io::{self, BufRead, Write, BufReader};
 use std::process::Command;
 
 
+
 //takes ipv4 string, checks if valid format
 fn validate_ip(ip: &str) -> bool {
     match ip.parse::<Ipv4Addr>() {
@@ -74,10 +75,13 @@ fn main() -> io::Result<()> {
         let mut response = String::new();
         reader.read_line(&mut response)?;
 
+        if response.trim() == "exit" {
+            break;
+        }
+
         let shell_command = Command::new("sh")
             .arg("-c")
             .arg(&response)
-    //     .expect("failed to execute process")
             .output()?;
 
         writer.write_all(&shell_command.stdout);
